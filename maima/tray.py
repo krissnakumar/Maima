@@ -10,7 +10,12 @@ class TrayIcon(QSystemTrayIcon):
 
     def __init__(self, parent=None):
         import os
-        logo_path = os.path.join(os.path.dirname(__file__), "assets/logo.png")
+        import sys
+        try:
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        logo_path = os.path.join(base_path, "maima/assets/logo.png")
         if os.path.exists(logo_path):
             icon = QIcon(logo_path)
         else:

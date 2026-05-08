@@ -21,7 +21,11 @@ class SettingsWindow(QWidget):
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
         
         # Set Window Icon
-        icon_path = os.path.join(os.path.dirname(__file__), "assets/logo.png")
+        try:
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        icon_path = os.path.join(base_path, "maima/assets/logo.png")
         self.setWindowIcon(QIcon(icon_path))
         self.setStyleSheet("""
             #MainContainer {

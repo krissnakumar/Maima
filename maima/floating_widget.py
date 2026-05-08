@@ -129,7 +129,13 @@ class FloatingWidget(QWidget):
         self.button.setFixedSize(40, 40)
         self.button.move(5, 5)
         self.button.setText("")
-        self.button.setIcon(QIcon(os.path.join(os.path.dirname(__file__), "assets/logo.png")))
+        
+        try:
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        icon_path = os.path.join(base_path, "maima/assets/logo.png")
+        self.button.setIcon(QIcon(icon_path))
         self.button.setIconSize(QSize(30, 30))
         self.button.clicked.connect(self.clicked.emit)
         

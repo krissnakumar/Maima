@@ -16,6 +16,15 @@ from tray import TrayIcon
 from settings import SettingsWindow
 from styles import STYLES
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 class MaimaApp:
     def __init__(self):
         self.app = QApplication(sys.argv)
@@ -23,7 +32,7 @@ class MaimaApp:
         self.app.setStyleSheet(STYLES)
 
         # Set Global App Icon
-        icon_path = os.path.join(os.path.dirname(__file__), "assets/logo.png")
+        icon_path = resource_path("maima/assets/logo.png")
         self.app.setWindowIcon(QIcon(icon_path))
 
         self.settings = {
