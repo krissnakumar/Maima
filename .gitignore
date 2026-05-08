@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+dist/
+build/
+*.spec
+maima/captures/
+Maima_Captures.docx
+.vscode/
+.idea/

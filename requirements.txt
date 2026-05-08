@@ -1,0 +1,6 @@
+PyQt6
+python-docx
+Pillow
+mss
+pynput
+pyinstaller
